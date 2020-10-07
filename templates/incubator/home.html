@@ -1,0 +1,49 @@
+{% extends 'base.html' %}
+
+{% block title %} Incubator {% endblock %}
+
+{% block body %}
+    <div class="container" style="padding-top: 30px">
+        <div class="jumbotron">
+            <h1>Welcome, To the Incubator !</h1>
+            <p style="padding-top: 50px">
+                Analyze the performance of your website, just type your URL in the box and let Incubator do the magic!
+            </p>
+        </div>
+
+        <form action="/analyze/" method="POST">
+            {% csrf_token %}
+            <div class="form-row align-items-center">
+                <div class="col-7">
+                    <label class="sr-only" for="inlineFormInputGroup">url</label>
+                    <div class="input-group mb-2">
+                        <div class="input-group-prepend">
+                            <div class="input-group-text">URL</div>
+                        </div>
+                        <input type="text" name="url" class="form-control" id="inlineFormInputGroup"
+                               placeholder="https://www.example.com">
+                    </div>
+                </div>
+                <div class="col-auto">
+                    <div class="form-check mb-2">
+                        <div class="dropdown">
+
+                            <label for="device" >
+                                <select id="device" name="device">
+                                    <option value="desktop">Desktop</option>
+                                    <option value="mobile" >Mobile</option>
+                                </select>
+                            </label>
+
+                        </div>
+                    </div>
+                </div>
+                <div class="col-auto">
+                    <button type="submit" class="btn btn-primary mb-2">Analyze!</button>
+                </div>
+            </div>
+        </form>
+
+    </div>
+
+{% endblock %}
