@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+
+{% load mytags %}
+{% block title %}
+    Network request
+{% endblock %}
+
+{% block css %}
+{% endblock %}
+
+{% block body %}
+
+
+    <div class="container my-5">
+        <h5>{{ title }}</h5>
+        <div class="list-group">
+            {% for url in net %}
+                <a href="#" class="list-group-item list-group-item-action my-2">
+                    <div class="d-flex w-100 justify-content-between">
+                        <h6 class="mb-1">{{ url.url }}</h6>
+                    </div>
+                    <p class="mb-1"></p>
+                    <small>Start Time : {{ url.startTime }}  End Time : {{ url.endTime }}
+                        Total Time : {{ url.endTime|subtract:url.startTime }}
+                    </small>
+                </a>
+            {% endfor %}
+
+        </div>
+    </div>
+
+{% endblock %}
+

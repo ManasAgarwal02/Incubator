@@ -4,8 +4,86 @@
     Analysis
 {% endblock %}
 
-{% block css %}  {% endblock %}
+{% block css %}
+{% endblock %}
 
 {% block body %}
-    body for analyze
+    <div class="container my-5">
+        <div class="list-group">
+
+            <div class="d-flex w-100 justify-content-between">
+                <h6 class="mb-1">URL: {{ my_url }}</h6>
+                <p> Report for the device: {{ my_device }} </p>
+            </div>
+
+            <a href="#" class="list-group-item list-group-item-action my-2">
+                <div class="d-flex w-100 justify-content-between">
+                    <h5 class="mb-1">Overall report of the website - {{ overall_category }}</h5>
+                </div>
+                <p class="mb-1"></p>
+                <small></small>
+            </a>
+
+            <a href="#" class="list-group-item list-group-item-action my-2">
+                <div class="d-flex w-100 justify-content-between">
+                    <h5 class="mb-1">Cummulative layout shift - {{ cumulative_layout_shift.displayValue }}</h5>
+                </div>
+                <p class="mb-1">{{ cumulative_layout_shift.description }}</p>
+            </a>
+
+            <a href="#" class="list-group-item list-group-item-action my-2">
+                <div class="d-flex w-100 justify-content-between">
+                    <h5 class="mb-1">Largest Contentful paint - {{ largest_contentful_paint.displayValue }}</h5>
+                </div>
+                <p class="mb-1">{{ largest_contentful_paint.description }}</p>
+            </a>
+
+            <a href="#" class="list-group-item list-group-item-action my-2">
+                <div class="d-flex w-100 justify-content-between">
+                    <h5 class="mb-1">First input delay - {{ first_input_delay.percentile }} Percentile</h5>
+                </div>
+                <p class="mb-1">{{ first_input_delay.description }}</p>
+            </a>
+
+            <a href="#" class="list-group-item list-group-item-action my-2">
+                <div class="d-flex w-100 justify-content-between">
+                    <h5 class="mb-1">First contentful paint - {{ first_contentful_paint.displayValue }}</h5>
+                </div>
+                <p class="mb-1">{{ first_contentful_paint.description }}</p>
+            </a>
+
+            <a href="#" class="list-group-item list-group-item-action my-2">
+                <div class="d-flex w-100 justify-content-between">
+                    <h5 class="mb-1">Iterative - {{ interactive.displayValue }}</h5>
+                </div>
+                <p class="mb-1">{{ interactive.description }}</p>
+            </a>
+
+            <a href="#" class="list-group-item list-group-item-action my-2">
+                <div class="d-flex w-100 justify-content-between">
+                    <h5 class="mb-1">Total blocking time - {{ total_blocking_time.displayValue }}</h5>
+                </div>
+                <p class="mb-1">{{ total_blocking_time.description }}</p>
+            </a>
+
+            <a href="#" class="list-group-item list-group-item-action my-2">
+                <div class="d-flex w-100 justify-content-between">
+                    <h5 class="mb-1">Speed Index - {{ speed_index.displayValue }}</h5>
+                </div>
+                <p class="mb-1">{{ speed_index.description }}</p>
+            </a>
+
+        </div>
+
+        <form action="/network/" method="POST">
+            {% csrf_token %}
+            <input type="hidden" name="url" value="{{ my_url }}">
+            <input type="hidden" name="device" value="{{ my_device }}">
+            <div class="col-auto">
+                <button type="submit" class="btn btn-primary mb-2">Network request!</button>
+            </div>
+        </form>
+    </div>
+
+
 {% endblock %}
