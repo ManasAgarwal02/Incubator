@@ -2,8 +2,28 @@
 
 {% block title %} About Incubator {% endblock %}
 
-{% block css %}  {% endblock %}
+{% block css %}
+    body {
+    background: #BBD2C5; /* fallback for old browsers */
+    background: -webkit-linear-gradient(to right, #536976, #BBD2C5); /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to right, #536976, #BBD2C5);
+    /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+,
+    Safari 7+ */
+    }
+{% endblock %}
 
 {% block body %}
-    Body for about page goes here.
+    <div class="container" style="padding-top: 30px">
+        <div class="my-4 heading">
+            <h1 style="font-family: 'Pacifico', cursive; font-size: 80px;">About Us!</h1>
+            <p style="padding-top: 50px; font-family: 'Architects Daughter', cursive; font-size: 25px;">
+                Our Website analyses various important parameters and help you to make your website perform better and faster,
+                you can check on what urls you website is connecting while the pages are loading and present all the required important
+                parameters in a well structured report format for better visualisation. Also, it gives loading of different urls on the webpage
+                to the great accuracy.
+            </p>
+            <br>
+            <strong style="padding-top: 50px; font-family: 'Architects Daughter', cursive; font-size: 25px;">Thank you and happy coding!</strong>
+        </div>
+    </div>
 {% endblock %}

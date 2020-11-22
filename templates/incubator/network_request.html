@@ -6,22 +6,45 @@
 {% endblock %}
 
 {% block css %}
+    .btn {
+  background-color: #ddd;
+  border: none;
+  color: black;
+  padding: 16px 32px;
+  text-align: center;
+  font-size: 16px;
+  margin: 4px 2px;
+  transition: 0.3s;
+}
+
+.btn:hover {
+  background-color: #b2beb5;
+  color: black;
+}
+    body {
+    background: #BBD2C5; /* fallback for old browsers */
+    background: -webkit-linear-gradient(to right, #536976, #BBD2C5); /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to right, #536976, #BBD2C5);
+    /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+,
+    Safari 7+ */
+    }
 {% endblock %}
+
 
 {% block body %}
 
 
     <div class="container my-5">
-        <h5>{{ title }}</h5>
-        <div class="list-group">
+        <h5 style="font-family: 'Patrick Hand', cursive; font-size: 40px">List of all the network requests that were made during page load.</h5>
+        <div class="list-group ">
             {% for url in net %}
-                <a href="#" class="list-group-item list-group-item-action my-2">
+                <a href="#" class="list-group-item list-group-item-action my-2 btn">
                     <div class="d-flex w-100 justify-content-between">
                         <h6 class="mb-1">{{ url.url }}</h6>
                     </div>
                     <p class="mb-1"></p>
-                    <small>Start Time : {{ url.startTime }}  End Time : {{ url.endTime }}
-                        Total Time : {{ url.endTime|subtract:url.startTime }}
+                    <small>Start Time : {{ url.startTime }} ms <br>  End Time : {{ url.endTime }} ms <br>
+                        Total Time : {{ url.endTime|subtract:url.startTime }} ms
                     </small>
                 </a>
             {% endfor %}

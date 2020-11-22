@@ -2,47 +2,68 @@
 
 {% block title %} Incubator {% endblock %}
 
+{% block css %}
+
+        body {
+            background: #BBD2C5; /* fallback for old browsers */
+            background: -webkit-linear-gradient(to right, #536976, #BBD2C5); /* Chrome 10-25, Safari 5.1-6 */
+            background: linear-gradient(to right, #536976, #BBD2C5);
+            /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+,
+               Safari 7+ */
+        }
+
+        .main{
+            padding-top: 16px;
+        }
+
+{% endblock %}
+
 {% block body %}
     <div class="container" style="padding-top: 30px">
-        <div class="jumbotron">
-            <h1>Welcome, To the Incubator !</h1>
-            <p style="padding-top: 50px">
+        <div class="my-4 heading">
+            <h1 style="font-family: 'Pacifico', cursive; font-size: 80px;">Welcome, To the<br> Incubator !</h1>
+            <p style="padding-top: 50px; font-family: 'Architects Daughter', cursive; font-size: 25px;">
                 Analyze the performance of your website, just type your URL in the box and let Incubator do the magic!
             </p>
         </div>
 
-        <form action="/analyze/" method="POST">
-            {% csrf_token %}
-            <div class="form-row align-items-center">
-                <div class="col-7">
-                    <label class="sr-only" for="inlineFormInputGroup">url</label>
-                    <div class="input-group mb-2">
-                        <div class="input-group-prepend">
-                            <div class="input-group-text">URL</div>
-                        </div>
-                        <input type="text" name="url" class="form-control" id="inlineFormInputGroup"
-                               placeholder="https://www.example.com">
-                    </div>
-                </div>
-                <div class="col-auto">
-                    <div class="form-check mb-2">
-                        <div class="dropdown">
+        <div class="main">
 
-                            <label for="device" >
-                                <select id="device" name="device">
-                                    <option value="desktop">Desktop</option>
-                                    <option value="mobile" >Mobile</option>
-                                </select>
-                            </label>
-
+            <form action="/analyze/" method="POST" class="my-4">
+                {% csrf_token %}
+                <div class="form-row align-items-center my-4">
+                    <div class="col-7">
+                        <label class="sr-only" for="inlineFormInputGroup">url</label>
+                        <div class="input-group mb-2">
+                            <div class="input-group-prepend">
+                                <div class="input-group-text" style="background-color: #ddd;" >URL</div>
+                            </div>
+                            <input style="background-color: #ddd;" type="text" name="url" class="form-control" id="inlineFormInputGroup"
+                                   placeholder="https://www.example.com">
                         </div>
                     </div>
+                    <div>
+                        <div class="col-auto my-4">
+                            <div class="form-check mb-2">
+                                <div class="dropdown">
+
+                                    <label for="device">
+                                        <select class="btn btn-outline-dark " id="device" name="device">
+                                            <option value="desktop">Desktop</option>
+                                            <option value="mobile">Mobile</option>
+                                        </select>
+                                    </label>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-auto">
+                        <button type="submit" class="btn btn-secondary mb-2">Analyze!</button>
+                    </div>
                 </div>
-                <div class="col-auto">
-                    <button type="submit" class="btn btn-primary mb-2">Analyze!</button>
-                </div>
-            </div>
-        </form>
+            </form>
+        </div>
 
     </div>
 
